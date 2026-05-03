@@ -1,20 +1,11 @@
-# Teachable Machine
+# Inteligencia Artificial Proyecto
 
-## Archivos
+## Proyectos
 
-- app.py: Aplicacion principal para ejecutar el agente
+Cambie de rama para ver los diferentes proyectos realizados.
 
-- evaluar_modelo.py: Para sacar los porcentajes de accuracy del agente,
-ojo: se necesita cambiar la URL de DATASET_ROOT donde se encuentra las imagenes a evaluar con el agente
+- Rama TeachableMachine: es el proyecto contruido basado en teachable machine como black box.
 
-- Agente de IA para Soporte Clinico en Cancer Cutaneo son las diapositivas
-
-- Los archivos .zip son los datasets usados en Teachable Machine para alimentar a la IA
-
-- keras_model1.h5: Es el archivo que contiene a la IA de teachable Machine
-
-- labels1.txt: Contiene las clases analizadas en la inteligencia artifical
-
-- FernandoTerrazasLlanosIA.docx: Contiene toda la documentacion oficial preparada para la publicacion en la revista cientifica.
+- Rama ProyectoPropio: proyecto haciendo uso de tecnologias propias implementando conceptos de IA
 
 ### Autor: Fernando Terrazas Llanos
