@@ -1,4 +1,6 @@
+
 from pathlib import Path
+
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
@@ -12,6 +14,7 @@ from torch.utils.data import DataLoader
 
 from src.config import CLASS_NAMES, DEVICE, OUTPUTS_DIR
 from src.model.trainer import TrainingHistory
+
 
 @torch.no_grad()
 def get_predictions_and_probabilities(
@@ -38,6 +41,7 @@ def get_predictions_and_probabilities(
 
     return np.array(all_labels), np.array(all_preds), np.array(all_probs)
 
+
 @torch.no_grad()
 def get_predictions(
     model: nn.Module,
@@ -46,6 +50,7 @@ def get_predictions(
 ) -> tuple:
     y_true, y_pred, _ = get_predictions_and_probabilities(model, loader, device)
     return y_true, y_pred
+
 
 def generate_confusion_matrix(
     y_true: np.ndarray,
@@ -65,7 +70,7 @@ def generate_confusion_matrix(
         values_format="d",
         colorbar=True,
     )
-    ax.set_title("Confusion Matrix", fontsize=14, pad=15)
+    ax.set_title("Confusion Matrix — Skin Lesions", fontsize=14, pad=15)
     ax.set_xlabel("Model Prediction", fontsize=12)
     ax.set_ylabel("True Label", fontsize=12)
 
@@ -73,8 +78,9 @@ def generate_confusion_matrix(
     plt.savefig(save_path, dpi=150, bbox_inches="tight")
     plt.close()
 
-    print(f"  Confusion matrix saved at: {save_path}")
+    print(f"  📊 Confusion matrix saved at: {save_path}")
     return cm
+
 
 def generate_classification_report(
     y_true: np.ndarray,
@@ -93,6 +99,7 @@ def generate_classification_report(
     print(report)
     return report
 
+
 def plot_training_history(
     history: TrainingHistory,
     save_path: Path = OUTPUTS_DIR / "training_history.png",
@@ -102,14 +109,16 @@ def plot_training_history(
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
 
+    # Loss plot
     ax1.plot(epochs, history.train_loss, "b-o", label="Train Loss", markersize=4)
     ax1.plot(epochs, history.val_loss, "r-o", label="Val Loss", markersize=4)
     ax1.set_title("Loss per Epoch", fontsize=13)
     ax1.set_xlabel("Epoch")
-    ax1.set_ylabel("Loss")
+    ax1.set_ylabel("Loss (CrossEntropy)")
     ax1.legend()
     ax1.grid(True, alpha=0.3)
 
+    # Accuracy plot
     ax2.plot(epochs, history.train_acc, "b-o", label="Train Acc", markersize=4)
     ax2.plot(epochs, history.val_acc, "r-o", label="Val Acc", markersize=4)
     ax2.set_title("Accuracy per Epoch", fontsize=13)
@@ -122,7 +131,8 @@ def plot_training_history(
     plt.savefig(save_path, dpi=150, bbox_inches="tight")
     plt.close()
 
-    print(f"  Training history plots saved at: {save_path}")
+    print(f"  📈 Training history plots saved at: {save_path}")
+
 
 def run_full_evaluation(
     model: nn.Module,
@@ -133,10 +143,16 @@ def run_full_evaluation(
     print("  FULL MODEL EVALUATION")
     print(f"{'='*65}\n")
 
+    # Predictions
     y_true, y_pred = get_predictions(model, test_loader)
 
+    # Classification report
     generate_classification_report(y_true, y_pred)
+
+    # Confusion matrix
     generate_confusion_matrix(y_true, y_pred)
+
+    # Training history plots
     plot_training_history(history)
 
     print(f"\n  Evaluation complete. Check the output folder: {OUTPUTS_DIR}\n")
