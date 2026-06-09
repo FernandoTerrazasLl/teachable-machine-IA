@@ -15,7 +15,7 @@ if not UNET_PATH.exists():
     UNET_PATH = Path("outputs/fused_segmenter_unet.onnx")
 
 CLASS_NAMES = ["AK", "BCC", "MEL"]
-
+# SOLO PARA GENERAR EL DATASET DE UNET SEGMENTADO)
 def load_unet_session():
     if not UNET_PATH.exists():
         print(f"Error: No se encontro el modelo U-Net ONNX en: {UNET_PATH}")

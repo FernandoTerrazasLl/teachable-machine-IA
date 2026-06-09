@@ -23,7 +23,7 @@ from sklearn.preprocessing import label_binarize
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from src.config import CLASS_NAMES, DATASET_LOCAL, OUTPUTS_DIR
-
+# SOLO PARA GENERAR GRAFICOS
 plt.rcParams.update({
     'font.size': 12,
     'axes.titlesize': 15,
