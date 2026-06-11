@@ -1,0 +1,44 @@
+name: derma_scan_app
+description: "Aplicación móvil offline de soporte clínico para el diagnóstico de lesiones cutáneas (AK, BCC, MEL) usando IA Clásica."
+version: 1.0.0+1
+
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.10.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Tipografía y estética premium
+  flutter_spinkit: ^5.2.0 # Animaciones de carga premium
+
+  # Adquisición de imágenes (Captura de cámara & Subida desde galería)
+  camera: ^0.10.5+5
+  image_picker: ^1.0.4
+
+  # Inferencia matemática offline
+  onnxruntime: ^1.4.1 # Soporte de inferencia local nativa para el modelo unificado
+
+  # Base de datos local offline (Historial clínico privado)
+  isar: ^3.1.0
+  isar_flutter_libs: ^3.1.0 # Soporte multiplataforma nativo para Isar
+
+  # Gestión de estado modular
+  flutter_riverpod: ^2.3.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+  isar_generator: ^3.1.0
+  build_runner: ^2.4.6
+
+flutter:
+  uses-material-design: true
+
+  # Cargar los modelos unificados de Deep Learning como recursos locales offline
+  assets:
+    - assets/models/
