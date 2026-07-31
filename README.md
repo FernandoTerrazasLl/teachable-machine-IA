@@ -1,3 +1,4 @@
+
 # DermaScan AI — Clasificador CNN de Lesiones de Piel (v2.0)
 
 Este repositorio contiene el pipeline de Machine Learning (ML) de nivel de producción de **DermaScan AI**, un sistema basado en **Redes Neuronales Convolucionales (CNN)** diseñado para la clasificación automatizada y offline de lesiones dermatológicas en tres clases críticas.
@@ -180,3 +181,5 @@ Para recrear los gráficos de análisis (ROC, Precision-Recall, diagramas de caj
 ```bash
 python generate_analysis_plots.py
 ```
+
+### Autor: Fernando Terrazas Llanos
